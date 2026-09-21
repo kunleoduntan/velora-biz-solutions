@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-velora-blue: #1B3A8C;
+  --color-velora-gold: #F5A623;
+}
