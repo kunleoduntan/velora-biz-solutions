@@ -406,7 +406,7 @@ export default function Footer() {
               </span>
 
               <span className="break-all text-sm text-slate-300 transition-colors duration-300 group-hover:text-velora-gold">
-                emmanueladenuga97@gmail.com
+                velorabizsolutions@gmail.com
               </span>
             </a>
 

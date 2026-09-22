@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useForm, ValidationError } from '@formspree/react'
 
-const FORM_ID = 'xaenoowv'
+const FORM_ID = 'xjykwakg'
 
 export default function Contact() {
   const sectionRef = useRef(null)
@@ -40,6 +40,7 @@ export default function Contact() {
       ========================================================= */}
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
+
         {/* Blue glow */}
         <div className="absolute -left-40 top-20 h-[450px] w-[450px] rounded-full bg-velora-blue/5 blur-[120px]" />
 
@@ -444,7 +445,7 @@ export default function Contact() {
                   className={`
                     group inline-flex w-full items-center justify-center
                     gap-3 rounded-xl px-6 py-4 font-semibold text-white
-                    transition-all duration-300
+                    transition-all duration-300 cursor-pointer
                     ${
                       state.submitting
                         ? 'cursor-not-allowed bg-slate-400'
@@ -620,7 +621,7 @@ export default function Contact() {
               ================================================= */}
 
               <a
-                href="mailto:emmanueladenuga97@gmail.com"
+                href="mailto:velorabizsolution@gmail.com"
                 className="group mt-3 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10"
               >
 
@@ -656,7 +657,7 @@ export default function Contact() {
                   </p>
 
                   <p className="mt-1 truncate text-sm font-semibold text-white">
-                    emmanueladenuga97@gmail.com
+                    velorabizsolution@gmail.com
                   </p>
                 </div>
 
