@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -37,8 +36,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build Vite application
         run: npm run build
+
+      - name: Verify build
+        run: |
+          echo "===== DIST CONTENTS ====="
+          find dist -maxdepth 2 -type f
+          echo "===== DIST INDEX ====="
+          cat dist/index.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
