@@ -27,7 +27,13 @@ export default function Hero() {
     return (
         <section
             id="home"
-            className="relative min-h-screen w-full overflow-hidden bg-slate-950"
+            className="
+                relative
+                min-h-screen
+                w-full
+                overflow-hidden
+                bg-slate-950
+            "
         >
             {/* =====================================================
                 BACKGROUND IMAGE
@@ -37,8 +43,10 @@ export default function Hero() {
                 src={heroImg}
                 alt=""
                 className="
-                    absolute inset-0
-                    h-full w-full
+                    absolute
+                    inset-0
+                    h-full
+                    w-full
                     object-cover
                     object-center
                     scale-[1.03]
@@ -50,13 +58,12 @@ export default function Hero() {
                 CINEMATIC OVERLAYS
             ====================================================== */}
 
-            {/* Main dark overlay */}
-            <div className="absolute inset-0 bg-slate-950/45" />
+            <div className="absolute inset-0 bg-slate-950/50" />
 
-            {/* Left dark gradient for text readability */}
             <div
                 className="
-                    absolute inset-0
+                    absolute
+                    inset-0
                     bg-gradient-to-r
                     from-slate-950/95
                     via-slate-950/70
@@ -65,47 +72,46 @@ export default function Hero() {
                 "
             />
 
-            {/* Bottom gradient */}
             <div
                 className="
-                    absolute inset-x-0 bottom-0
-                    h-[45%]
+                    absolute
+                    inset-x-0
+                    bottom-0
+                    h-[55%]
                     bg-gradient-to-t
                     from-slate-950
-                    via-slate-950/60
+                    via-slate-950/65
                     to-transparent
                 "
             />
 
             {/* =====================================================
-                BRAND COLOR GLOW
+                BRAND GLOW
             ====================================================== */}
 
-            {/* Blue glow */}
             <div
                 className="
                     pointer-events-none
                     absolute
-                    -left-32
-                    top-1/3
+                    -left-40
+                    top-[30%]
                     h-[420px]
                     w-[420px]
                     rounded-full
-                    bg-velora-blue/25
+                    bg-velora-blue/20
                     blur-[130px]
                     animate-pulse
                 "
             />
 
-            {/* Gold glow */}
             <div
                 className="
                     pointer-events-none
                     absolute
-                    right-[8%]
-                    top-[22%]
-                    h-[260px]
-                    w-[260px]
+                    right-[5%]
+                    top-[20%]
+                    h-[280px]
+                    w-[280px]
                     rounded-full
                     bg-velora-gold/10
                     blur-[110px]
@@ -119,8 +125,9 @@ export default function Hero() {
             <div
                 className="
                     pointer-events-none
-                    absolute inset-0
-                    opacity-[0.035]
+                    absolute
+                    inset-0
+                    opacity-[0.025]
                 "
                 style={{
                     backgroundImage: `
@@ -135,8 +142,26 @@ export default function Hero() {
                 HERO CONTENT
             ====================================================== */}
 
-            <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-28 pb-24 sm:px-8 lg:px-12">
-
+            <div
+                className="
+                    relative
+                    z-10
+                    mx-auto
+                    flex
+                    min-h-screen
+                    max-w-7xl
+                    items-center
+                    px-6
+                    pt-36
+                    pb-32
+                    sm:px-8
+                    sm:pt-40
+                    sm:pb-36
+                    lg:px-12
+                    lg:pt-32
+                    lg:pb-28
+                "
+            >
                 <div className="w-full max-w-4xl">
 
                     {/* =================================================
@@ -145,22 +170,25 @@ export default function Hero() {
 
                     <div
                         className="
-                            mb-7
+                            mb-8
                             flex
                             items-center
                             gap-4
                             animate-[heroFadeUp_0.9s_ease-out_both]
+                            sm:mb-9
                         "
                     >
-                        <span className="h-px w-10 bg-velora-gold" />
+                        <span className="h-px w-9 bg-velora-gold sm:w-12" />
 
                         <span
                             className="
-                                text-xs
+                                text-[10px]
                                 font-semibold
                                 uppercase
-                                tracking-[0.28em]
+                                tracking-[0.22em]
                                 text-velora-gold
+                                sm:text-xs
+                                sm:tracking-[0.28em]
                             "
                         >
                             Business Technology • ERP • Automation
@@ -174,13 +202,14 @@ export default function Hero() {
                     <h1
                         className="
                             max-w-4xl
-                            text-5xl
+                            text-[3.25rem]
                             font-semibold
-                            leading-[0.98]
-                            tracking-[-0.035em]
+                            leading-[1.02]
+                            tracking-[-0.04em]
                             text-white
                             animate-[heroFadeUp_0.9s_0.15s_ease-out_both]
                             sm:text-6xl
+                            sm:leading-[0.98]
                             md:text-7xl
                             lg:text-[82px]
                             xl:text-[92px]
@@ -188,9 +217,8 @@ export default function Hero() {
                     >
                         Technology for a
 
-                        <span className="block">
+                        <span className="mt-3 block sm:mt-2">
 
-                            {/* Rotating phrase */}
                             <span
                                 className={`
                                     inline-block
@@ -217,15 +245,16 @@ export default function Hero() {
 
                     <p
                         className="
-                            mt-8
-                            max-w-2xl
-                            text-base
+                            mt-9
+                            max-w-xl
+                            text-[15px]
                             leading-7
                             text-slate-200/90
                             animate-[heroFadeUp_0.9s_0.3s_ease-out_both]
+                            sm:mt-10
                             sm:text-lg
+                            sm:leading-8
                             md:text-xl
-                            md:leading-8
                         "
                     >
                         Velora BiZ Solutions helps businesses, institutions,
@@ -239,23 +268,26 @@ export default function Hero() {
 
                     <div
                         className="
-                            mt-9
+                            mt-10
                             flex
                             flex-col
                             gap-4
                             animate-[heroFadeUp_0.9s_0.45s_ease-out_both]
+                            sm:mt-11
                             sm:flex-row
                             sm:items-center
                         "
                     >
 
                         {/* Primary CTA */}
+
                         <a
                             href="#contact"
                             className="
                                 group
                                 relative
                                 inline-flex
+                                min-h-[54px]
                                 items-center
                                 justify-center
                                 gap-3
@@ -283,7 +315,8 @@ export default function Hero() {
 
                             <span
                                 className="
-                                    relative z-10
+                                    relative
+                                    z-10
                                     text-lg
                                     transition-transform
                                     duration-300
@@ -293,7 +326,6 @@ export default function Hero() {
                                 →
                             </span>
 
-                            {/* Shine */}
                             <span
                                 className="
                                     absolute
@@ -310,11 +342,13 @@ export default function Hero() {
                         </a>
 
                         {/* Secondary CTA */}
+
                         <a
                             href="#what-we-do"
                             className="
                                 group
                                 inline-flex
+                                min-h-[54px]
                                 items-center
                                 justify-center
                                 gap-3
@@ -355,20 +389,22 @@ export default function Hero() {
                     </div>
 
                     {/* =================================================
-                        TRUST / CAPABILITIES STRIP
+                        CAPABILITIES
                     ================================================== */}
 
                     <div
                         className="
-                            mt-12
+                            mt-14
                             flex
                             flex-wrap
                             items-center
-                            gap-x-6
-                            gap-y-3
+                            gap-x-5
+                            gap-y-4
                             text-xs
                             text-slate-300/80
                             animate-[heroFadeUp_0.9s_0.6s_ease-out_both]
+                            sm:mt-16
+                            sm:gap-x-6
                         "
                     >
 
@@ -410,7 +446,7 @@ export default function Hero() {
             </div>
 
             {/* =====================================================
-                RIGHT SIDE DECORATIVE ELEMENT
+                RIGHT DECORATIVE ELEMENT
             ====================================================== */}
 
             <div
@@ -424,10 +460,8 @@ export default function Hero() {
                     lg:block
                 "
             >
-
                 <div className="relative h-64 w-64">
 
-                    {/* Outer ring */}
                     <div
                         className="
                             absolute
@@ -439,7 +473,6 @@ export default function Hero() {
                         "
                     />
 
-                    {/* Middle ring */}
                     <div
                         className="
                             absolute
@@ -451,7 +484,6 @@ export default function Hero() {
                         "
                     />
 
-                    {/* Inner circle */}
                     <div
                         className="
                             absolute
@@ -464,7 +496,6 @@ export default function Hero() {
                         "
                     />
 
-                    {/* Center */}
                     <div
                         className="
                             absolute
@@ -489,7 +520,6 @@ export default function Hero() {
                         V
                     </div>
 
-                    {/* Floating dots */}
                     <span className="absolute right-4 top-10 h-2 w-2 rounded-full bg-velora-gold shadow-lg shadow-velora-gold/50" />
 
                     <span className="absolute bottom-10 left-5 h-1.5 w-1.5 rounded-full bg-white/60" />
@@ -497,11 +527,67 @@ export default function Hero() {
                     <span className="absolute left-10 top-4 h-1 w-1 rounded-full bg-velora-blue" />
 
                 </div>
-
             </div>
 
             {/* =====================================================
-                SCROLL INDICATOR
+                MOBILE SCROLL INDICATOR
+            ====================================================== */}
+
+            <a
+                href="#who-we-are"
+                className="
+                    group
+                    absolute
+                    bottom-7
+                    left-1/2
+                    z-20
+                    flex
+                    -translate-x-1/2
+                    flex-col
+                    items-center
+                    gap-2
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.3em]
+                    text-white/40
+                    transition-colors
+                    duration-300
+                    hover:text-white
+                    md:hidden
+                "
+            >
+                <span>
+                    Scroll
+                </span>
+
+                <span
+                    className="
+                        flex
+                        h-9
+                        w-6
+                        items-start
+                        justify-center
+                        rounded-full
+                        border
+                        border-white/20
+                        p-1.5
+                    "
+                >
+                    <span
+                        className="
+                            h-1.5
+                            w-1.5
+                            rounded-full
+                            bg-velora-gold
+                            animate-bounce
+                        "
+                    />
+                </span>
+            </a>
+
+            {/* =====================================================
+                DESKTOP SCROLL INDICATOR
             ====================================================== */}
 
             <a
