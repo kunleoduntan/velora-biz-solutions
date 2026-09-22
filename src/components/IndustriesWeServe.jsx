@@ -156,12 +156,13 @@ export default function IndustriesWeServe() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+
         {/* =========================================================
             HEADER
         ========================================================= */}
 
         <div
-          className={`mb-14 grid gap-8 transition-all duration-1000 lg:grid-cols-[1fr_0.75fr] lg:items-end ${
+          className={`mb-14 grid gap-8 transition-all duration-700 lg:grid-cols-[1fr_0.75fr] lg:items-end ${
             isVisible
               ? 'translate-y-0 opacity-100'
               : 'translate-y-10 opacity-0'
@@ -198,13 +199,14 @@ export default function IndustriesWeServe() {
         ========================================================= */}
 
         <div
-          className={`mb-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl transition-all delay-100 duration-1000 ${
+          className={`mb-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl transition-all delay-75 duration-700 ${
             isVisible
               ? 'translate-y-0 opacity-100'
               : 'translate-y-10 opacity-0'
           }`}
         >
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+
             {/* Left */}
             <div className="relative overflow-hidden bg-velora-blue p-8 md:p-10 lg:p-12">
               <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-white/10" />
@@ -235,7 +237,7 @@ export default function IndustriesWeServe() {
 
                   <div className="h-px w-16 bg-white/20">
                     <div
-                      className="h-full bg-velora-gold transition-all duration-500"
+                      className="h-full bg-velora-gold transition-all duration-300"
                       style={{
                         width: `${((activeIndustry + 1) / industries.length) * 100}%`,
                       }}
@@ -304,9 +306,9 @@ export default function IndustriesWeServe() {
                 onFocus={() => setActiveIndustry(index)}
                 onClick={() => setActiveIndustry(index)}
                 className={`
-                  group relative min-h-[145px] overflow-hidden
+                  group relative min-h-[145px] cursor-pointer overflow-hidden
                   rounded-2xl border p-5 text-left
-                  transition-all duration-500
+                  transition-all duration-200
                   ${
                     isVisible
                       ? 'translate-y-0 opacity-100'
@@ -319,7 +321,7 @@ export default function IndustriesWeServe() {
                   }
                 `}
                 style={{
-                  transitionDelay: `${150 + index * 45}ms`,
+                  transitionDelay: `${150 + index * 15}ms`,
                 }}
               >
                 {/* Gold corner */}
@@ -327,7 +329,7 @@ export default function IndustriesWeServe() {
                   className={`
                     absolute -right-5 -top-5 h-16 w-16 rounded-full
                     bg-velora-gold/20 blur-xl
-                    transition-opacity duration-500
+                    transition-opacity duration-200
                     ${isActive ? 'opacity-100' : 'opacity-0'}
                   `}
                 />
@@ -337,7 +339,7 @@ export default function IndustriesWeServe() {
                   className={`
                     relative flex h-10 w-10 items-center justify-center
                     rounded-xl text-lg
-                    transition-all duration-500
+                    transition-all duration-200
                     ${
                       isActive
                         ? 'bg-white/10 text-velora-gold'
@@ -352,7 +354,7 @@ export default function IndustriesWeServe() {
                 <h3
                   className={`
                     relative mt-5 text-sm font-semibold leading-5
-                    transition-colors duration-300
+                    transition-colors duration-150
                     ${
                       isActive
                         ? 'text-white'
@@ -367,7 +369,7 @@ export default function IndustriesWeServe() {
                 <span
                   className={`
                     absolute bottom-5 right-5 text-sm
-                    transition-all duration-300
+                    transition-all duration-150
                     ${
                       isActive
                         ? 'translate-x-0 text-velora-gold opacity-100'
@@ -390,7 +392,7 @@ export default function IndustriesWeServe() {
           className={`
             mt-12 flex flex-col items-center justify-between gap-6
             border-t border-slate-200 pt-8
-            text-center transition-all delay-700 duration-1000
+            text-center transition-all delay-150 duration-700
             md:flex-row md:text-left
             ${
               isVisible
@@ -410,11 +412,11 @@ export default function IndustriesWeServe() {
 
           <a
             href="#contact"
-            className="group inline-flex items-center gap-3 font-semibold text-velora-blue"
+            className="group inline-flex cursor-pointer items-center gap-3 font-semibold text-velora-blue"
           >
             Discuss your industry
 
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-velora-gold text-slate-950 transition-all duration-300 group-hover:translate-x-1 group-hover:shadow-lg">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-velora-gold text-slate-950 transition-all duration-200 group-hover:translate-x-1 group-hover:shadow-lg">
               →
             </span>
           </a>
