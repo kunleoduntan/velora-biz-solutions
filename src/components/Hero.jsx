@@ -156,6 +156,9 @@ export default function Hero() {
                     pt-28
                     pb-28
 
+                    max-[380px]:pt-24
+                    max-[380px]:pb-24
+
                     sm:px-8
                     sm:pt-36
                     sm:pb-32
@@ -170,8 +173,7 @@ export default function Hero() {
                         w-full
                         max-w-4xl
 
-                        max-[380px]:-translate-y-2
-                        max-[380px]:pt-2
+                        max-[380px]:-translate-y-1
 
                         sm:max-w-3xl
                         lg:max-w-4xl
@@ -184,13 +186,15 @@ export default function Hero() {
 
                     <div
                         className="
-                            mb-6
+                            mb-7
                             flex
                             items-center
                             gap-3
                             animate-[heroFadeUp_0.9s_ease-out_both]
 
-                            min-[390px]:mb-7
+                            max-[380px]:mb-6
+
+                            min-[390px]:mb-8
 
                             sm:mb-9
                             sm:gap-4
@@ -234,14 +238,15 @@ export default function Hero() {
                     <h1
                         className="
                             max-w-4xl
-                            text-[clamp(2.65rem,11vw,3.25rem)]
                             font-semibold
-                            leading-[0.98]
+                            leading-[0.99]
                             tracking-[-0.045em]
                             text-white
                             animate-[heroFadeUp_0.9s_0.15s_ease-out_both]
 
-                            min-[390px]:text-[clamp(2.85rem,10.5vw,3.25rem)]
+                            text-[clamp(2.9rem,12vw,3.45rem)]
+
+                            min-[390px]:text-[clamp(3rem,11.5vw,3.5rem)]
 
                             sm:text-6xl
                             sm:leading-[0.98]
@@ -253,18 +258,23 @@ export default function Hero() {
                             xl:text-[92px]
                         "
                     >
-                        Technology for a
+                        {/* Main line */}
 
-                        {/* =================================================
-                            ANIMATED PHRASE
-                        ================================================== */}
+                        <span className="block">
+                            Technology for a
+                        </span>
+
+                        {/* Animated phrase */}
 
                         <span
                             className="
-                                mt-2
+                                mt-3
                                 block
                                 min-h-[1em]
                                 whitespace-nowrap
+
+                                min-[390px]:mt-3
+
                                 sm:mt-2
                             "
                         >
@@ -295,14 +305,16 @@ export default function Hero() {
 
                     <p
                         className="
-                            mt-7
+                            mt-8
                             max-w-xl
                             text-[14px]
                             leading-6
                             text-slate-200/90
                             animate-[heroFadeUp_0.9s_0.3s_ease-out_both]
 
-                            min-[390px]:mt-8
+                            max-[380px]:mt-7
+
+                            min-[390px]:mt-9
                             min-[390px]:text-[15px]
                             min-[390px]:leading-7
 
@@ -324,13 +336,15 @@ export default function Hero() {
 
                     <div
                         className="
-                            mt-8
+                            mt-9
                             flex
                             flex-col
                             gap-3
                             animate-[heroFadeUp_0.9s_0.45s_ease-out_both]
 
-                            min-[390px]:mt-9
+                            max-[380px]:mt-8
+
+                            min-[390px]:mt-10
                             min-[390px]:gap-4
 
                             sm:mt-11
@@ -475,6 +489,8 @@ export default function Hero() {
                             text-[11px]
                             text-slate-300/80
                             animate-[heroFadeUp_0.9s_0.6s_ease-out_both]
+
+                            max-[380px]:mt-9
 
                             min-[390px]:mt-12
                             min-[390px]:gap-x-5
