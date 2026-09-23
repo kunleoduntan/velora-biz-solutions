@@ -221,10 +221,11 @@ const industries = [
 
 export default function IndustriesWeServe() {
   const sectionRef = useRef(null)
-  const mobileNavRef = useRef(null)
 
   const [isVisible, setIsVisible] = useState(false)
   const [activeIndustry, setActiveIndustry] = useState(0)
+  const [showAllMobile, setShowAllMobile] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -248,8 +249,24 @@ export default function IndustriesWeServe() {
 
   const active = industries[activeIndustry]
 
+  const filteredIndustries = industries.filter((industry) => {
+    const query = searchTerm.toLowerCase().trim()
+
+    if (!query) return true
+
+    return (
+      industry.name.toLowerCase().includes(query) ||
+      industry.product.toLowerCase().includes(query) ||
+      industry.tags.some((tag) =>
+        tag.toLowerCase().includes(query)
+      )
+    )
+  })
+
   const selectIndustry = (index) => {
     setActiveIndustry(index)
+    setShowAllMobile(false)
+    setSearchTerm('')
   }
 
   return (
@@ -319,70 +336,180 @@ export default function IndustriesWeServe() {
         </div>
 
         {/* =========================================================
-            MOBILE INDUSTRY SELECTOR
+            MOBILE INDUSTRY PICKER
         ========================================================= */}
 
         <div
-          className={`mb-4 lg:hidden transition-all delay-75 duration-700 ${
+          className={`mb-4 lg:hidden transition-all duration-700 ${
             isVisible
               ? 'translate-y-0 opacity-100'
               : 'translate-y-6 opacity-0'
           }`}
         >
-          <div className="mb-3 flex items-center justify-between">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                Explore industries
-              </p>
+          {/* Selected industry card */}
+          <button
+            type="button"
+            onClick={() => setShowAllMobile((value) => !value)}
+            className="group w-full rounded-2xl border border-slate-200 bg-white p-3 text-left shadow-sm transition-all duration-300 hover:border-velora-blue/20 hover:shadow-md"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-velora-blue text-lg text-velora-gold shadow-lg shadow-velora-blue/10">
+                {active.icon}
+              </div>
 
-              <p className="mt-1 text-xs font-medium text-slate-500">
-                Swipe to explore
-              </p>
+              <div className="min-w-0 flex-1">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-velora-gold">
+                  Explore industries
+                </p>
+
+                <p className="mt-1 truncate text-sm font-semibold text-slate-950">
+                  {active.name}
+                </p>
+
+                <p className="mt-0.5 truncate text-[10px] text-slate-400">
+                  {active.product}
+                </p>
+              </div>
+
+              <div
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-transform duration-300 ${
+                  showAllMobile ? 'rotate-180' : ''
+                }`}
+              >
+                ↓
+              </div>
             </div>
+          </button>
 
-            <span className="text-[10px] font-bold text-slate-400">
-              {String(activeIndustry + 1).padStart(2, '0')} /{' '}
-              {String(industries.length).padStart(2, '0')}
-            </span>
-          </div>
+          {/* =======================================================
+              EXPANDED INDUSTRY DIRECTORY
+          ======================================================= */}
 
           <div
-            ref={mobileNavRef}
-            className="flex gap-2 overflow-x-auto pb-3 scrollbar-none"
+            className={`grid transition-all duration-300 ${
+              showAllMobile
+                ? 'mt-3 grid-rows-[1fr] opacity-100'
+                : 'grid-rows-[0fr] opacity-0'
+            }`}
           >
-            {industries.map((industry, index) => {
-              const isActive = activeIndustry === index
-
-              return (
-                <button
-                  key={industry.name}
-                  type="button"
-                  onClick={() => selectIndustry(index)}
-                  className={`flex min-w-fit cursor-pointer items-center gap-2 rounded-full border px-3.5 py-2.5 text-xs font-semibold transition-all duration-200 ${
-                    isActive
-                      ? 'border-velora-blue bg-velora-blue text-white shadow-md shadow-velora-blue/15'
-                      : 'border-slate-200 bg-white text-slate-600'
-                  }`}
-                >
-                  <span
-                    className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] ${
-                      isActive
-                        ? 'bg-white/10 text-velora-gold'
-                        : 'bg-slate-100 text-velora-blue'
-                    }`}
+            <div className="overflow-hidden">
+              <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-xl shadow-slate-900/[0.04]">
+                {/* Search */}
+                <div className="relative mb-3">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
                   >
-                    {industry.icon}
+                    <circle cx="11" cy="11" r="7" />
+
+                    <path
+                      strokeLinecap="round"
+                      d="m16.5 16.5 4 4"
+                    />
+                  </svg>
+
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(event) =>
+                      setSearchTerm(event.target.value)
+                    }
+                    placeholder="Search industry..."
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-xs text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-velora-blue/30 focus:bg-white focus:ring-2 focus:ring-velora-blue/10"
+                  />
+                </div>
+
+                {/* Result count */}
+                <div className="mb-2 flex items-center justify-between px-1">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-400">
+                    {filteredIndustries.length} industries
                   </span>
 
-                  {industry.name}
-                </button>
-              )
-            })}
+                  {searchTerm && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchTerm('')}
+                      className="text-[10px] font-semibold text-velora-blue"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+
+                {/* Industry grid */}
+                <div className="grid max-h-[310px] grid-cols-2 gap-2 overflow-y-auto pr-1 sm:grid-cols-3">
+                  {filteredIndustries.map((industry) => {
+                    const index = industries.indexOf(industry)
+                    const isActive = activeIndustry === index
+
+                    return (
+                      <button
+                        key={industry.name}
+                        type="button"
+                        onClick={() => selectIndustry(index)}
+                        className={`group relative min-h-[76px] rounded-xl border p-3 text-left transition-all duration-200 ${
+                          isActive
+                            ? 'border-velora-blue bg-velora-blue text-white shadow-md shadow-velora-blue/15'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-velora-blue/20 hover:bg-slate-50'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <span
+                            className={`flex h-7 w-7 items-center justify-center rounded-lg text-xs ${
+                              isActive
+                                ? 'bg-white/10 text-velora-gold'
+                                : 'bg-slate-100 text-velora-blue'
+                            }`}
+                          >
+                            {industry.icon}
+                          </span>
+
+                          {isActive && (
+                            <span className="text-xs text-velora-gold">
+                              ✓
+                            </span>
+                          )}
+                        </div>
+
+                        <p
+                          className={`mt-2 line-clamp-2 text-[10px] font-semibold leading-4 ${
+                            isActive
+                              ? 'text-white'
+                              : 'text-slate-700'
+                          }`}
+                        >
+                          {industry.name}
+                        </p>
+                      </button>
+                    )
+                  })}
+
+                  {filteredIndustries.length === 0 && (
+                    <div className="col-span-2 py-8 text-center sm:col-span-3">
+                      <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-400">
+                        ?
+                      </div>
+
+                      <p className="mt-3 text-xs font-semibold text-slate-700">
+                        No industry found
+                      </p>
+
+                      <p className="mt-1 text-[10px] text-slate-400">
+                        Try another search term.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* =========================================================
-            MAIN DESKTOP / TABLET LAYOUT
+            MAIN LAYOUT
         ========================================================= */}
 
         <div
@@ -413,7 +540,7 @@ export default function IndustriesWeServe() {
               </div>
             </div>
 
-            <div className="max-h-[620px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+            <div className="max-h-[620px] overflow-y-auto pr-1">
               <div className="grid gap-1">
                 {industries.map((industry, index) => {
                   const isActive = activeIndustry === index
@@ -422,9 +549,9 @@ export default function IndustriesWeServe() {
                     <button
                       key={industry.name}
                       type="button"
-                      onMouseEnter={() => selectIndustry(index)}
-                      onFocus={() => selectIndustry(index)}
-                      onClick={() => selectIndustry(index)}
+                      onMouseEnter={() => setActiveIndustry(index)}
+                      onFocus={() => setActiveIndustry(index)}
+                      onClick={() => setActiveIndustry(index)}
                       className={`group relative flex w-full cursor-pointer items-center gap-4 rounded-xl px-4 py-3 text-left transition-all duration-200 ${
                         isActive
                           ? 'bg-velora-blue text-white'
@@ -524,10 +651,7 @@ export default function IndustriesWeServe() {
             </div>
 
             <div className="relative flex min-h-[470px] flex-col justify-between p-6 sm:min-h-[540px] sm:p-9 md:min-h-[580px] md:p-12 lg:min-h-[620px] lg:p-14">
-              {/* ===================================================
-                  TOP
-              =================================================== */}
-
+              {/* Top */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-velora-gold shadow-lg shadow-velora-gold/40 sm:h-2 sm:w-2" />
@@ -543,35 +667,27 @@ export default function IndustriesWeServe() {
                 </span>
               </div>
 
-              {/* ===================================================
-                  CONTENT
-              =================================================== */}
-
+              {/* Content */}
               <div
                 key={activeIndustry}
                 className="animate-[industryFade_250ms_ease-out]"
               >
-                {/* Icon */}
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-2xl text-velora-gold shadow-xl backdrop-blur-sm sm:mb-7 sm:h-16 sm:w-16 sm:text-3xl md:h-20 md:w-20 md:rounded-[1.4rem] md:text-4xl">
                   {active.icon}
                 </div>
 
-                {/* Product */}
                 <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-velora-gold sm:mb-3 sm:text-xs">
                   {active.product}
                 </p>
 
-                {/* Industry */}
                 <h3 className="max-w-2xl text-3xl font-semibold leading-[1.05] tracking-[-0.025em] text-white sm:text-4xl md:text-5xl lg:text-6xl">
                   {active.name}
                 </h3>
 
-                {/* Description */}
                 <p className="mt-4 max-w-2xl text-xs leading-6 text-slate-400 sm:mt-5 sm:text-sm sm:leading-7 md:text-base">
                   {active.description}
                 </p>
 
-                {/* Tags */}
                 <div className="mt-5 flex flex-wrap gap-2 sm:mt-7">
                   {active.tags.map((tag) => (
                     <span
@@ -584,10 +700,7 @@ export default function IndustriesWeServe() {
                 </div>
               </div>
 
-              {/* ===================================================
-                  BOTTOM
-              =================================================== */}
-
+              {/* Bottom */}
               <div className="mt-8 border-t border-white/10 pt-5 sm:mt-10 sm:pt-7">
                 <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                   <div>
@@ -612,7 +725,6 @@ export default function IndustriesWeServe() {
                   </a>
                 </div>
 
-                {/* Progress */}
                 <div className="mt-5 h-[2px] w-full overflow-hidden bg-white/10 sm:mt-6">
                   <div
                     className="h-full bg-velora-gold transition-all duration-300"
@@ -773,15 +885,6 @@ export default function IndustriesWeServe() {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-
-        .scrollbar-none {
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
         }
       `}</style>
     </section>
