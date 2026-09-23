@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import heroImg from '../assets/newHero.jpg'
 
@@ -151,18 +152,31 @@ export default function Hero() {
                     min-h-screen
                     max-w-7xl
                     items-center
-                    px-6
-                    pt-36
-                    pb-32
+                    px-5
+                    pt-28
+                    pb-28
+
                     sm:px-8
-                    sm:pt-40
-                    sm:pb-36
+                    sm:pt-36
+                    sm:pb-32
+
                     lg:px-12
                     lg:pt-32
                     lg:pb-28
                 "
             >
-                <div className="w-full max-w-4xl">
+                <div
+                    className="
+                        w-full
+                        max-w-4xl
+
+                        max-[380px]:-translate-y-2
+                        max-[380px]:pt-2
+
+                        sm:max-w-3xl
+                        lg:max-w-4xl
+                    "
+                >
 
                     {/* =================================================
                         EYEBROW
@@ -170,23 +184,41 @@ export default function Hero() {
 
                     <div
                         className="
-                            mb-8
+                            mb-6
                             flex
                             items-center
-                            gap-4
+                            gap-3
                             animate-[heroFadeUp_0.9s_ease-out_both]
+
+                            min-[390px]:mb-7
+
                             sm:mb-9
+                            sm:gap-4
                         "
                     >
-                        <span className="h-px w-9 bg-velora-gold sm:w-12" />
+                        <span
+                            className="
+                                h-px
+                                w-7
+                                shrink-0
+                                bg-velora-gold
+
+                                sm:w-12
+                            "
+                        />
 
                         <span
                             className="
-                                text-[10px]
+                                whitespace-nowrap
+                                text-[8px]
                                 font-semibold
                                 uppercase
-                                tracking-[0.22em]
+                                tracking-[0.16em]
                                 text-velora-gold
+
+                                min-[360px]:text-[9px]
+                                min-[390px]:tracking-[0.19em]
+
                                 sm:text-xs
                                 sm:tracking-[0.28em]
                             "
@@ -202,30 +234,49 @@ export default function Hero() {
                     <h1
                         className="
                             max-w-4xl
-                            text-[3.25rem]
+                            text-[clamp(2.65rem,11vw,3.25rem)]
                             font-semibold
-                            leading-[1.02]
-                            tracking-[-0.04em]
+                            leading-[0.98]
+                            tracking-[-0.045em]
                             text-white
                             animate-[heroFadeUp_0.9s_0.15s_ease-out_both]
+
+                            min-[390px]:text-[clamp(2.85rem,10.5vw,3.25rem)]
+
                             sm:text-6xl
                             sm:leading-[0.98]
+
                             md:text-7xl
+
                             lg:text-[82px]
+
                             xl:text-[92px]
                         "
                     >
                         Technology for a
 
-                        <span className="mt-3 block sm:mt-2">
+                        {/* =================================================
+                            ANIMATED PHRASE
+                        ================================================== */}
 
+                        <span
+                            className="
+                                mt-2
+                                block
+                                min-h-[1em]
+                                whitespace-nowrap
+                                sm:mt-2
+                            "
+                        >
                             <span
                                 className={`
                                     inline-block
+                                    whitespace-nowrap
                                     text-velora-gold
                                     transition-all
                                     duration-500
                                     ease-[cubic-bezier(0.22,1,0.36,1)]
+
                                     ${
                                         isChanging
                                             ? 'translate-y-4 opacity-0 blur-sm'
@@ -235,7 +286,6 @@ export default function Hero() {
                             >
                                 {phrases[phraseIndex]}
                             </span>
-
                         </span>
                     </h1>
 
@@ -245,15 +295,21 @@ export default function Hero() {
 
                     <p
                         className="
-                            mt-9
+                            mt-7
                             max-w-xl
-                            text-[15px]
-                            leading-7
+                            text-[14px]
+                            leading-6
                             text-slate-200/90
                             animate-[heroFadeUp_0.9s_0.3s_ease-out_both]
+
+                            min-[390px]:mt-8
+                            min-[390px]:text-[15px]
+                            min-[390px]:leading-7
+
                             sm:mt-10
                             sm:text-lg
                             sm:leading-8
+
                             md:text-xl
                         "
                     >
@@ -268,11 +324,15 @@ export default function Hero() {
 
                     <div
                         className="
-                            mt-10
+                            mt-8
                             flex
                             flex-col
-                            gap-4
+                            gap-3
                             animate-[heroFadeUp_0.9s_0.45s_ease-out_both]
+
+                            min-[390px]:mt-9
+                            min-[390px]:gap-4
+
                             sm:mt-11
                             sm:flex-row
                             sm:items-center
@@ -287,15 +347,16 @@ export default function Hero() {
                                 group
                                 relative
                                 inline-flex
-                                min-h-[54px]
+                                min-h-[52px]
+                                w-full
                                 items-center
                                 justify-center
                                 gap-3
                                 overflow-hidden
                                 rounded-xl
                                 bg-velora-gold
-                                px-7
-                                py-4
+                                px-6
+                                py-3.5
                                 text-sm
                                 font-bold
                                 text-slate-950
@@ -307,6 +368,11 @@ export default function Hero() {
                                 hover:bg-[#ffb43b]
                                 hover:shadow-2xl
                                 hover:shadow-velora-gold/20
+
+                                sm:w-auto
+                                sm:min-h-[54px]
+                                sm:px-7
+                                sm:py-4
                             "
                         >
                             <span className="relative z-10">
@@ -348,7 +414,8 @@ export default function Hero() {
                             className="
                                 group
                                 inline-flex
-                                min-h-[54px]
+                                min-h-[52px]
+                                w-full
                                 items-center
                                 justify-center
                                 gap-3
@@ -356,8 +423,8 @@ export default function Hero() {
                                 border
                                 border-white/25
                                 bg-white/[0.05]
-                                px-7
-                                py-4
+                                px-6
+                                py-3.5
                                 text-sm
                                 font-semibold
                                 text-white
@@ -367,6 +434,11 @@ export default function Hero() {
                                 hover:-translate-y-1
                                 hover:border-white/50
                                 hover:bg-white/10
+
+                                sm:w-auto
+                                sm:min-h-[54px]
+                                sm:px-7
+                                sm:py-4
                             "
                         >
                             <span>
@@ -394,22 +466,28 @@ export default function Hero() {
 
                     <div
                         className="
-                            mt-14
+                            mt-10
                             flex
                             flex-wrap
                             items-center
-                            gap-x-5
-                            gap-y-4
-                            text-xs
+                            gap-x-4
+                            gap-y-3
+                            text-[11px]
                             text-slate-300/80
                             animate-[heroFadeUp_0.9s_0.6s_ease-out_both]
+
+                            min-[390px]:mt-12
+                            min-[390px]:gap-x-5
+                            min-[390px]:gap-y-4
+                            min-[390px]:text-xs
+
                             sm:mt-16
                             sm:gap-x-6
                         "
                     >
 
                         <span className="flex items-center gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-velora-gold" />
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-velora-gold" />
                             ERP Solutions
                         </span>
 
@@ -418,7 +496,7 @@ export default function Hero() {
                         </span>
 
                         <span className="flex items-center gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-velora-gold" />
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-velora-gold" />
                             Accounting
                         </span>
 
@@ -427,7 +505,7 @@ export default function Hero() {
                         </span>
 
                         <span className="flex items-center gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-velora-gold" />
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-velora-gold" />
                             Automation
                         </span>
 
@@ -436,7 +514,7 @@ export default function Hero() {
                         </span>
 
                         <span className="flex items-center gap-2">
-                            <span className="h-1.5 w-1.5 rounded-full bg-velora-gold" />
+                            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-velora-gold" />
                             Digital Transformation
                         </span>
 
@@ -538,7 +616,7 @@ export default function Hero() {
                 className="
                     group
                     absolute
-                    bottom-7
+                    bottom-6
                     left-1/2
                     z-20
                     flex
@@ -554,6 +632,7 @@ export default function Hero() {
                     transition-colors
                     duration-300
                     hover:text-white
+
                     md:hidden
                 "
             >
@@ -611,6 +690,7 @@ export default function Hero() {
                     transition-colors
                     duration-300
                     hover:text-white
+
                     md:flex
                 "
             >
